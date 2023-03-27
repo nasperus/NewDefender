@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    WaveConfig waveConfig;
+    WaveConfig  waveConfig;
     List<Transform> waypoints;
     private int indexPos = 0;
-    private float enemySpeed = 3f;
 
     void Start()
     {
@@ -22,13 +21,17 @@ public class Enemy : MonoBehaviour
         EnemyMoveToPosition();
     }
 
+    public void ThisObject(WaveConfig waveConfig)
+    {
+        this.waveConfig = waveConfig;
+    }
 
     private void EnemyMoveToPosition()
     {
         if (indexPos <= waypoints.Count - 1)
         {
             var targetPosition = waypoints[indexPos].transform.position;
-            var moveTarget = enemySpeed * Time.deltaTime;
+            var moveTarget = waveConfig.GetMoveSpeed() * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveTarget);
 
             if (transform.position == targetPosition)
