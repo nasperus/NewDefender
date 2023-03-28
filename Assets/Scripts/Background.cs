@@ -13,7 +13,7 @@ public class Background : MonoBehaviour
         offset = new Vector2(0f, scrollSpeed);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         material.mainTextureOffset += offset * Time.deltaTime;

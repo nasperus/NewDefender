@@ -15,12 +15,12 @@ public class EnemySpawner : MonoBehaviour
             yield return StartCoroutine(AllPaths());
         }
 
-        while (check);  
-       
+        while (check);
+
     }
 
 
-   
+
     IEnumerator AllPaths()
     {
         for (int waveIndex = 0; waveIndex < waveConfigs.Count; waveIndex++)
@@ -31,11 +31,11 @@ public class EnemySpawner : MonoBehaviour
     }
 
 
-    IEnumerator SpawnAllEnemies (WaveConfig waveConfig)
+    IEnumerator SpawnAllEnemies(WaveConfig waveConfig)
     {
         for (int enemyCount = 0; enemyCount < waveConfig.GetNumberOfEnemies(); enemyCount++)
         {
-            var newEnemy = Instantiate(waveConfig.GetEnemyPrefab(), waveConfig.GetEnemyPosition()[0].transform.position, transform.rotation);
+            var newEnemy = Instantiate(waveConfig.GetEnemyPrefab(), waveConfig.GetPathPosition()[0].transform.position, transform.rotation);
             newEnemy.GetComponent<Enemy>().ThisObject(waveConfig);
             yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
 

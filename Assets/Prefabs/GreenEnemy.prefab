@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 5467433767876402381}
   - component: {fileID: 8766863300970392614}
   - component: {fileID: 5410690640582999032}
-  m_Layer: 0
+  - component: {fileID: 4272992999083595701}
+  - component: {fileID: 2198853230248212259}
+  m_Layer: 9
   m_Name: GreenEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7650350237929396450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.004, y: -0.012, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -97,3 +99,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1032ea90c216e4e438a14b025708dc09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &4272992999083595701
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7650350237929396450}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.013144046}
+  serializedVersion: 2
+  m_Radius: 0.42905828
+--- !u!114 &2198853230248212259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7650350237929396450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e3fea2c4807b648904f62ac88a48b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  enemylaser: {fileID: 1673867140509256825, guid: 88e6f2ddc458a4e45a2111f5de55628f, type: 3}
+  enemyShootSpeed: 10
+  shootCounter: 0
+  min: 0.2
+  max: 3
+  deathVFX: {fileID: 587086971486560689, guid: 83ff30500a01fd140b9addcc5575fe55, type: 3}
+  explotionDuration: 0.3
+  deathSound: {fileID: 8300000, guid: 58c7d139a75897544b2890fd07311ff0, type: 3}
+  deathSoundVolume: 0.7
+  shootSound: {fileID: 8300000, guid: 2e7b929822dcbd5408907df933a5213e, type: 3}
+  shootSoundVolume: 0.7

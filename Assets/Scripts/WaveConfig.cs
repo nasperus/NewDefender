@@ -19,14 +19,16 @@ public class WaveConfig : ScriptableObject
     public float GetMoveSpeed() { return movingSpeed; }
     public float GetTimeBetweenSpawns() { return timeBetweenSpawns; }
 
-    public List<Transform> GetEnemyPosition()
+    public List<Transform> GetPathPosition()
     {
         var newList = new List<Transform>();
 
         foreach (Transform child in pathPrefab.transform)
         {
+
             newList.Add(child);
         }
+
         return newList;
     }
 

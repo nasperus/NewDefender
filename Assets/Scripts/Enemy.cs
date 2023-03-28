@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    WaveConfig  waveConfig;
+    WaveConfig waveConfig;
     List<Transform> waypoints;
     private int indexPos = 0;
 
+
     void Start()
     {
-        waypoints = waveConfig.GetEnemyPosition();
+        waypoints = waveConfig.GetPathPosition();
         transform.position = waypoints[indexPos].position;
+
 
     }
 
@@ -19,7 +21,10 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         EnemyMoveToPosition();
+
     }
+
+
 
     public void ThisObject(WaveConfig waveConfig)
     {
@@ -46,6 +51,7 @@ public class Enemy : MonoBehaviour
         }
 
     }
+
 
 
 }
