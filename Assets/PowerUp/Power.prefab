@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3965755830586907679}
   - component: {fileID: -8685237626164449783}
   - component: {fileID: 8902807348517682974}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Power
   m_TagString: Finish
   m_Icon: {fileID: 0}

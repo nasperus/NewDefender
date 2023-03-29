@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 191313300}
   - component: {fileID: 191313299}
   - component: {fileID: 191313298}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Bottom Shredder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 690507044}
   - component: {fileID: 690507043}
   - component: {fileID: 690507042}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Top Shredder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 775084436620879738, guid: 3f517d31d6e5a524baa345637655a4c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 10.41
       objectReference: {fileID: 0}
     - target: {fileID: 775084436620879738, guid: 3f517d31d6e5a524baa345637655a4c0, type: 3}
       propertyPath: m_LocalPosition.z
