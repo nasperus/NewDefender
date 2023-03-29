@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e3fea2c4807b648904f62ac88a48b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
+  health: 600
   scoreValue: 460
   enemylaser: {fileID: 3132688005210149476, guid: 918f5262a955b84438b2d05e3de74214, type: 3}
   enemyShootSpeed: 5
