@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b20174f377add2749a470c99a7189375, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b4b56f90629c5a845a00daf76055d279, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.82, y: 0.84}
+  m_Size: {x: 0.93, y: 0.84}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -112,11 +112,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  scoreValue: 150
   enemylaser: {fileID: 1673867140509256825, guid: 88e6f2ddc458a4e45a2111f5de55628f, type: 3}
   enemyShootSpeed: 10
-  shootCounter: 0
-  min: 0.2
-  max: 3
+  min: 0.5
+  max: 1.5
   deathVFX: {fileID: 587086971486560689, guid: 83ff30500a01fd140b9addcc5575fe55, type: 3}
   explotionDuration: 0.3
   deathSound: {fileID: 8300000, guid: 58c7d139a75897544b2890fd07311ff0, type: 3}

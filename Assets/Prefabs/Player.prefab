@@ -100,10 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  health: 300
+  health: 500
   deathSound: {fileID: 8300000, guid: 58c7d139a75897544b2890fd07311ff0, type: 3}
   deathSoundVolume: 0.7
   shootSound: {fileID: 8300000, guid: 36dc0e1a152636f449c39c1dfebb5a23, type: 3}
+  bulletSound: {fileID: 0}
   shootSoundVolume: 0.1
   laser: {fileID: 4121865236028056553, guid: 8b75e592d38f2f942aa0148aff031f5a, type: 3}
   shootingSpeed: 30
