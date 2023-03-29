@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
 
     [Header("Projectile")]
     [SerializeField] GameObject laser;
+    [SerializeField] GameObject laser2;
     [SerializeField] float shootingSpeed = 20f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
     Coroutine coroutine;
@@ -48,12 +50,25 @@ public class Player : MonoBehaviour
         {
             StopCoroutine(coroutine);
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
     IEnumerator FireCoroutine()
     {
         while (true)
         {
             var shooting = Instantiate(laser, transform.position, transform.rotation);
+            var shooting2 = Instantiate(laser2, transform.position, transform.rotation);
+
+            if (TakePower.instance.IsDestroyed())
+            {
+                shooting2.transform.position += Vector3.right * 0.3f;
+                shooting.transform.position += Vector3.left * 0.3f;
+            }
+
+            shooting2.GetComponent<Rigidbody2D>().velocity = new Vector2(0, shootingSpeed);
             shooting.GetComponent<Rigidbody2D>().velocity = new Vector2(0, shootingSpeed);
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
             yield return new WaitForSeconds(projectileFiringPeriod);
@@ -87,13 +102,13 @@ public class Player : MonoBehaviour
     }
 
     public int GetHealth() { return health; }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        Damage damage = other.gameObject.GetComponent<Damage>();
-        health -= damage.GetDamage();
+        health -= Damage.instance.GetDamage();
         AudioSource.PlayClipAtPoint(bulletSound, Camera.main.transform.position, 1f);
-        damage.Hit();
+        Damage.instance.Hit();
 
         if (health <= 0)
         {

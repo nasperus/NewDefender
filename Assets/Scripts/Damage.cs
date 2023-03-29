@@ -5,15 +5,20 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     [SerializeField] int damage = 100;
-
-
+    public static Damage instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     public int GetDamage()
     {
         return damage;
     }
     public void Hit()
     {
+
         Destroy(gameObject);
+
     }
 
 

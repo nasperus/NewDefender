@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1768201959869722061}
   - component: {fileID: 1768201959869722063}
   - component: {fileID: 1768201959869722062}
-  m_Layer: 8
+  - component: {fileID: 68879405}
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 907547209
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e75622fb26ec4a549b7c970a718f02f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,14 +100,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab5ec8ee6ce0cf4b911937fba7a157c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 20
   health: 500
   deathSound: {fileID: 8300000, guid: 58c7d139a75897544b2890fd07311ff0, type: 3}
   deathSoundVolume: 0.7
   shootSound: {fileID: 8300000, guid: 36dc0e1a152636f449c39c1dfebb5a23, type: 3}
-  bulletSound: {fileID: 0}
+  bulletSound: {fileID: 8300000, guid: d97c679daccfb3445bee66a7646ed8f5, type: 3}
   shootSoundVolume: 0.1
   laser: {fileID: 4121865236028056553, guid: 8b75e592d38f2f942aa0148aff031f5a, type: 3}
+  laser2: {fileID: 4121865236028056553, guid: 8b75e592d38f2f942aa0148aff031f5a, type: 3}
   shootingSpeed: 30
   projectileFiringPeriod: 0.1
 --- !u!114 &1768201959869722063
@@ -132,14 +134,14 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.99, y: 0.75}
+    oldSize: {x: 1.4142857, y: 1.0714285}
     newSize: {x: 0.99, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -167,3 +169,24 @@ PolygonCollider2D:
       - {x: 0.24376047, y: -0.2540914}
       - {x: 0.45499998, y: -0.23128092}
       - {x: 0.41632304, y: -0.22409046}
+--- !u!50 &68879405
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768201959869722048}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -6,10 +6,12 @@ using UnityEngine;
 public class GameSession : MonoBehaviour
 {
     int score = 0;
+    public static GameSession instance;
 
     private void Awake()
     {
         SetUpSingleton();
+        instance = this;
     }
 
     private void SetUpSingleton()
