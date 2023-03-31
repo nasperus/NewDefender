@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUp:
   - {fileID: 7751418285652916101, guid: d7c68126cf267fc48a89635f2d073d02, type: 3}
+  xMax: 13
+  xMin: 13
+  speed: 10

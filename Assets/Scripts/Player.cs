@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
 
-    private float xMin, xMax, yMin, yMax;
-    private float padding = 0.5f;
+
+
     [Header("Player Movement")]
     [SerializeField] float moveSpeed;
     [SerializeField] int health;
@@ -24,12 +24,13 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject laser2;
     [SerializeField] float shootingSpeed = 20f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
-    Coroutine coroutine;
+
 
     void Start()
     {
 
-        CameraBoundries();
+
+        StartCoroutine(FireCoroutine());
 
     }
 
@@ -37,24 +38,14 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
-        Fire();
 
-    }
-    private void Fire()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            coroutine = StartCoroutine(FireCoroutine());
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            StopCoroutine(coroutine);
-        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
+
     }
+
     IEnumerator FireCoroutine()
     {
         while (true)
@@ -78,21 +69,18 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
-        var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
-        var newposX = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
-        var newposY = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
-        transform.position = new Vector2(newposX, newposY);
+        if (Input.touchCount > 0)
+        {
+            var touch = Input.GetTouch(0);
+            var touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            touchPosition.z = 0f;
+            transform.position = touchPosition;
+
+
+        }
 
     }
-    private void CameraBoundries()
-    {
-        Camera gameCamera = Camera.main;
-        xMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + padding;
-        xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - padding;
-        yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + padding;
-        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - padding;
-    }
+
     private void Die()
     {
 
@@ -115,7 +103,8 @@ public class Player : MonoBehaviour
             Die();
         }
 
-
     }
+
+
 
 }

@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    
-    [SerializeField] GameObject[] powerUp;
+
+    public GameObject[] powerUp;
     public static PowerUp instance;
-    private float padding = 0.5f;
-    private int xMax = 17, xMin = 17;
-    private int speed = 10;
+    [SerializeField] int xMax, xMin;
+    [SerializeField] int speed;
     Vector2 newPos;
 
     private void Awake()
     {
         instance = this;
 
-        
-       
+
+
     }
 
 
     private void Start()
     {
-     
+
         StartCoroutine(PowerDown());
     }
 
@@ -32,7 +31,7 @@ public class PowerUp : MonoBehaviour
     {
 
         var random = Random.Range(-xMin, xMax);
-        newPos = new Vector2(random, transform.position.y);  
+        newPos = new Vector2(random, transform.position.y);
         var spawn = Instantiate(powerUp[0], newPos, transform.rotation);
         spawn.GetComponent<Rigidbody2D>().velocity = Vector2.down * speed;
 
@@ -44,7 +43,7 @@ public class PowerUp : MonoBehaviour
         while (true)
         {
             PowerUpScore();
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(15f);
         }
     }
 

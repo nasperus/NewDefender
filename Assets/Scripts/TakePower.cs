@@ -15,7 +15,6 @@ public class TakePower : MonoBehaviour
 
         Destroy(gameObject);
 
-
     }
 
 
