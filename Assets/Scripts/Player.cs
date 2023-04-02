@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 
 
     private float deltaX, deltaY;
+    private float xMax, xMin, yMin, yMax;
+    private float padding = 0.5f;
     [Header("Player Movement")]
     [SerializeField] float moveSpeed;
     [SerializeField] int health;
@@ -33,7 +35,7 @@ public class Player : MonoBehaviour
 
         StartCoroutine(FireCoroutine());
         rigidbody2 = GetComponent<Rigidbody2D>();
-
+        CameraBoundries();
     }
 
 
@@ -67,6 +69,8 @@ public class Player : MonoBehaviour
 
     private void TouchMovement()
     {
+
+
         if (Input.touchCount > 0)
         {
             var touch = Input.GetTouch(0);
@@ -79,11 +83,15 @@ public class Player : MonoBehaviour
                     Time.timeScale = 1f;
                     deltaX = touchPosition.x - transform.position.x;
                     deltaY = touchPosition.y - transform.position.y;
+
                     break;
 
                 case TouchPhase.Moved:
 
                     rigidbody2.MovePosition(new Vector2(touchPosition.x - deltaX, touchPosition.y - deltaY));
+                    var xPos = Mathf.Clamp(transform.position.x, xMin, xMax);
+                    var yPos = Mathf.Clamp(transform.position.y, yMin, yMax);
+                    transform.position = new Vector2(xPos, yPos);
                     break;
 
 
@@ -123,5 +131,14 @@ public class Player : MonoBehaviour
     }
 
 
+    private void CameraBoundries()
+    {
+        xMin = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + padding;
+        xMax = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - padding;
+        yMin = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + padding;
+        yMax = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - padding;
+
+
+    }
 
 }
