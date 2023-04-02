@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
 
 
-
+    private float deltaX, deltaY;
     [Header("Player Movement")]
     [SerializeField] float moveSpeed;
     [SerializeField] int health;
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject laser2;
     [SerializeField] float shootingSpeed = 20f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
+    private Rigidbody2D rigidbody2;
 
 
     void Start()
@@ -31,18 +32,15 @@ public class Player : MonoBehaviour
 
 
         StartCoroutine(FireCoroutine());
+        rigidbody2 = GetComponent<Rigidbody2D>();
 
     }
 
 
     void Update()
     {
-        Move();
+        TouchMovement();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
 
     }
 
@@ -67,15 +65,34 @@ public class Player : MonoBehaviour
 
     }
 
-    private void Move()
+    private void TouchMovement()
     {
         if (Input.touchCount > 0)
         {
             var touch = Input.GetTouch(0);
             var touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-            touchPosition.z = 0f;
-            transform.position = touchPosition;
 
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+
+                    Time.timeScale = 1f;
+                    deltaX = touchPosition.x - transform.position.x;
+                    deltaY = touchPosition.y - transform.position.y;
+                    break;
+
+                case TouchPhase.Moved:
+
+                    rigidbody2.MovePosition(new Vector2(touchPosition.x - deltaX, touchPosition.y - deltaY));
+                    break;
+
+
+                case TouchPhase.Ended:
+
+                    Time.timeScale = 0f;
+                    break;
+
+            }
 
         }
 

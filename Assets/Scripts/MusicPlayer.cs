@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-
+    public static MusicPlayer instance;
+    public AudioSource audioSource;
     private void Awake()
     {
+        instance = this;
+        audioSource = GetComponent<AudioSource>();
         SetUpSingleton();
     }
 
-    private void SetUpSingleton()
+    public void SetUpSingleton()
     {
         if (FindObjectsOfType(GetType()).Length > 1)
         {
